@@ -132,5 +132,5 @@ export default function EmployeesPage(props) {
     );
 
 
-    return isAdmin ? {adminToReturn} : {notAdminToReturn}
+    return isAdmin ? adminToReturn : notAdminToReturn
 }
