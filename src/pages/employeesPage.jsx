@@ -12,7 +12,8 @@ export default function EmployeesPage(props) {
     const [employeesData, setEmployeesData] = useState({});
     const [isError, setIsError] = useState(false);
     const { user } = useUser();
-    const isAdmin = user === props.authorisedUser || false
+    const adminUser = `YWRtaW5hZG1pbnN1cGVyc2VjcmV0`
+    const isAdmin = user === adminUser || false
 
     function addEmployee(lastname, firstname, address, city, age) {
         axios.post("https://pakworldbackend.herokuapp.com/addEmployee", {
