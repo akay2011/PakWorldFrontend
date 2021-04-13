@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import logoImg from "../img/Pakworld.png";
-import {Card, Logo, Form, Input, Button, Error} from '../components/auth/auth-form';
+import {Card, Logo, Form, Input, Button, Error} from '../components/style/auth-form';
 import axios from "axios";
 
 export default function LoginPage({ setToken, setUser }) {

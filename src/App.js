@@ -11,6 +11,7 @@ import EmployeePage from "./pages/employeePage";
 import EmployeesPage from "./pages/employeesPage";
 import SupplierPage from "./pages/supplierPage";
 import {Switch, Route} from "react-router";
+import useUser from "./components/auth/useUser";
 
 
 function App() {
