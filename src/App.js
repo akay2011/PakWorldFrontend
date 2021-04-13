@@ -52,6 +52,7 @@ function App() {
                                     <Link
                                         onClick={()=> {
                                             setToken('')
+                                            setUser('')
                                         }}
                                         to="/" className="nav-link">Logout
                                     </Link>
