@@ -7,12 +7,13 @@ import useUser from "../components/auth/useUser";
 
 
 
-function EmployeesPage(props) {
+export default function EmployeesPage() {
     const history = useHistory();
     const [employeesData, setEmployeesData] = useState({});
     const [isError, setIsError] = useState(false);
     const { user } = useUser();
-    const isAdmin = user === props.authorisedUser || false
+    const adminUser = `YWRtaW5hZG1pbnN1cGVyc2VjcmV0`
+    const isAdmin = user === adminUser || false
 
     function addEmployee(lastname, firstname, address, city, age) {
         axios.post("https://pakworldbackend.herokuapp.com/addEmployee", {
@@ -117,5 +118,3 @@ function EmployeesPage(props) {
         </div>
     );
 }
-
-export default EmployeesPage;

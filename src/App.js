@@ -18,7 +18,7 @@ function App() {
     const { token, setToken } = useToken();
     const { setUser } = useUser();
     const pathname = window.location.pathname
-    const adminUser = `YWRtaW5hZG1pbnN1cGVyc2VjcmV0`
+    
 
     if(!token) {
         if(pathname === '/signup'){
@@ -64,7 +64,7 @@ function App() {
                     <Route path="/signup" component={SignupPage} />
                     <Route path="/suppliers" exact component={SuppliersPage} />
                     <Route path="/supplier/:id" component={SupplierPage} />
-                    <Route path="/employees" component={() => <EmployeesPage authorisedUser={adminUser} />}/>
+                    <Route path="/employees" component={EmployeesPage} />
                     <Route path="/employee/:id" component={EmployeePage} />
                    
                 </div>
