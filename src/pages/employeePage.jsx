@@ -7,7 +7,7 @@ function EmployeePage () {
     const [isError, setIsError] = useState(false)
 
     function fetchEmployeeData() {
-        axios.get(`https://pakworldbackend.herokuapp.com/mployeeData/${employeeId}`)
+        axios.get(`https://pakworldbackend.herokuapp.com/employeeData/${employeeId}`)
             .then(function (response) {
                 console.log(response.data);
                 setEmployeeData(response.data)

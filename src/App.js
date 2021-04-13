@@ -43,9 +43,7 @@ function App() {
                                 <li className="navbar-item">
                                     <Link to="/employees" className="nav-link">Employees</Link>
                                 </li>
-                                <li className="navbar-item">
-                                    <Link to="/business" className="nav-link">Business</Link>
-                                </li>
+                               
                             </ul>
                         </div>
                         <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">

@@ -27,7 +27,7 @@ function SignupPage() {
 
     useEffect(()=> {
         if(registered){
-            window.location.href = "http://localhost:3000/"
+            window.location.href = "https://pakworldfrontend.herokuapp.com/"
         }
     }, [registered])
 

@@ -14,7 +14,7 @@ function SupplierPage() {
 
     function deleteImage(imageId) {
         console.log(imageId)
-        axios.delete(`https://pakworldbackend.herokuapp.com/eleteInvoice/${imageId}`).then(result => {
+        axios.delete(`https://pakworldbackend.herokuapp.com/deleteInvoice/${imageId}`).then(result => {
             if (result.status === 200) {
                 //ok
                 fetchSupplierData()
@@ -30,7 +30,7 @@ function SupplierPage() {
 
 
     function fetchSupplierData() {
-        axios.get(`https://pakworldbackend.herokuapp.com/upplierData/${supplierId}`)
+        axios.get(`https://pakworldbackend.herokuapp.com/supplierData/${supplierId}`)
             .then(function (response) {
                 console.log(response.data);
                 setSupplierData(response.data)
