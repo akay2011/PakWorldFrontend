@@ -7,13 +7,12 @@ import useUser from "../components/auth/useUser";
 
 
 
-export default function EmployeesPage() {
+export default function EmployeesPage(props) {
     const history = useHistory();
     const [employeesData, setEmployeesData] = useState({});
     const [isError, setIsError] = useState(false);
     const { user } = useUser();
-    const adminUser = `YWRtaW5hZG1pbnN1cGVyc2VjcmV0`
-    const isAdmin = user === adminUser || false
+    const isAdmin = user === props.authorisedUser || false
 
     function addEmployee(lastname, firstname, address, city, age) {
         axios.post("https://pakworldbackend.herokuapp.com/addEmployee", {
@@ -75,7 +74,7 @@ export default function EmployeesPage() {
     }, [])
 
 
-    return (
+    const adminToReturn = (
         <div>
             <div>
                 <AddEmployeeFormDialog onConfirm={ (employeeLastname, employeeFirstname, employeeAddress, employeeCity, employeeAge)=> {
@@ -84,22 +83,10 @@ export default function EmployeesPage() {
                 />
             </div>
             <div>
-                {
-                    isAdmin ? (
-                        <div>
-
-                            <br/>
-                            <div>
-                                <RemoveEmployeeFormDialog onConfirm={ (employeeID)=> {
-                                    return deleteEmployee(employeeID);
-                                }}
-                                />
-                            </div>
-                            <br/>
-
-                        </div>
-                    ) : <br/>
-                }
+                <RemoveEmployeeFormDialog onConfirm={ (employeeID)=> {
+                    return deleteEmployee(employeeID);
+                }}
+                />
             </div>
             {
                 isError ? <div>Error trying removing employee</div> : null
@@ -117,4 +104,33 @@ export default function EmployeesPage() {
             </ul>
         </div>
     );
+
+
+    const notAdminToReturn = (
+        <div>
+            <div>
+                <AddEmployeeFormDialog onConfirm={ (employeeLastname, employeeFirstname, employeeAddress, employeeCity, employeeAge)=> {
+                    return addEmployee(employeeLastname, employeeFirstname, employeeAddress, employeeCity, employeeAge);
+                }}
+                />
+            </div>
+            {
+                isError ? <div>Error trying removing employee</div> : null
+            }
+            <br/>
+            <ul className="list-group">
+                {
+                    employeesData && employeesData.data ? employeesData.data.map(employee => (
+                        <div>
+                            <div onClick={()=> handleSelectedEmployee(employee.employeeID)} key={employee.employeeID} className="list-group-item">{employee.LastName} {employee.FirstName} (ID: {employee.employeeID})</div>
+                        </div>
+
+                    )) : null
+                }
+            </ul>
+        </div>
+    );
+
+
+    return isAdmin ? {adminToReturn} : {notAdminToReturn}
 }
